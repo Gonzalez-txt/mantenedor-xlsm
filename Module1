@@ -1,0 +1,15 @@
+Private Sub InsertPicFromFile()
+Dim cCell As Range
+ 
+For Each cCell In Selection
+If cCell.Value <> "" Then
+On Error Resume Next
+ActiveSheet.Shapes.AddPicture _
+    Filename:=cCell.Value, LinkToFile:=msoFalse, _
+    SaveWithDocument:=msoTrue, _
+    Left:=cCell.Offset(ColumnOffset:=1).Left, Top:=cCell.Top, _
+    Width:=cCell.Height, Height:=cCell.Height
+    
+End If
+Next cCell
+End Sub
